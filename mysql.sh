@@ -8,11 +8,10 @@ LOGFILE_DIR="/var/log/expense_shell"
 mkdir -p $LOGFILE_DIR
 TIMESTAMP=$(date +%m-%d-%Y-%H-%M-%S)
 LOGFILE=$(echo $0 | cut -d "." -f1)
-LOGFILE_NAME="$LOGFILE_DIR/$LOGFILE-$TIMESTAMP.sh"
+LOGFILE_NAME="$LOGFILE_DIR/$LOGFILE-$TIMESTAMP.log"
 #check user has root access
 
 USERID=$(id -u)
-
 if [ $USERID -ne 0 ]
 then
     echo "Error!!!..You need root privileges to execute the script"
@@ -29,7 +28,7 @@ if [ $1 -ne 0 ]
     fi
 }
 
-dnf list installed mysql-server
+dnf list installed mysql-server >>$LOGFILE_NAME
 if [ $? -ne 0 ]
 then
     dnf install mysql-server -y &>>$LOGFILE_NAME

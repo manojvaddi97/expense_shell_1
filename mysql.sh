@@ -24,7 +24,7 @@ if [ $1 -ne 0 ]
         echo -e "$2 is $R Failed $N"
         exit 1
     else
-        echo -e "MYSQL Installation is $G Successful $N"
+        echo -e "$2 is $G Successful $N"
     fi
 }
 
@@ -34,7 +34,7 @@ then
     dnf install mysql-server -y &>>$LOGFILE_NAME
     VALIDATE $? "MYSQL Server Installation"
 else
-    echo -e "MYSQL Installation $Y already exists $N"
+    echo -e "MYSQL Server Installation $Y already exists $N"
 fi
 
 systemctl enable mysqld

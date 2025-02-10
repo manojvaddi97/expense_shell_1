@@ -11,7 +11,7 @@ LOGFILE=$(echo $0 | cut -d "." -f1)
 LOGFILE_NAME="$LOGFILE_DIR/$LOGFILE-$TIMESTAMP.sh"
 #check user has root access
 
-USERID=$(echo id)
+USERID=$(id -u)
 
 if [ $USERID -ne 0 ]
 then
